@@ -4,14 +4,16 @@ import {
 	StyleSheet
 } from 'react-native';
 
-export class ItemRow extends React.PureComponent {
+type WorkoutListRowProps = {
+	id: string;
+	title: string;
+	onPressItem: Function;
+};
+
+export class WorkoutListRow extends React.PureComponent<WorkoutListRowProps, {}> {
 	constructor(props) {
 		super(props);
 	}
-
-	_onPress = () => {
-		this.props.onPressItem(this.props.id);
-	};
 
 	render() {
 		return (
@@ -28,4 +30,4 @@ const styles = StyleSheet.create({
 		fontSize: 18,
 		height: 44,
 	}
-})
+});

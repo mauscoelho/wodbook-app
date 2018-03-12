@@ -1,4 +1,4 @@
-import { Buffer } from 'buffer';
+// import { Buffer } from 'buffer';
 import { workouts, movements, user } from './mock.data';
 const token = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVhOTczYzE4ZWU2ZjgyYTE0NWYyNDI5OCIsImVtYWlsIjoiZWdpbGxzdmVpbmJqb3Juc0BnbWFpbC5jb20iLCJhZG1pbiI6dHJ1ZSwiaWF0IjoxNTE5ODYwODIzLCJleHAiOjE1NTEzMTA0MjN9.yMbSuyo3Op4mMeeguEszy0Dp1WyDz-uMa8t8h7FUjXQ';
 
@@ -26,36 +26,36 @@ export class WodbookApi {
 		return resJson.data;
 	}
 
-	static async post(endpoint, params, body) {
-		const url = `${this.baseUrl}/${endpoint}`;
+	// static async post(endpoint, params, body) {
+	// 	const url = `${this.baseUrl}/${endpoint}`;
 
-		if (body) {
-			// TODO
-		}
-	}
+	// 	if (body) {
+	// 		// TODO
+	// 	}
+	// }
 
-	static async getWorkouts() {
+	static async getWorkouts(): Promise<Workout[]> {
+		return workouts as any;
 		// return await this.get('workouts');
-		return workouts;
 	}
 
-	static async getMovements() {
-		return movements;
+	static async getMovements(): Promise<Movement[]> {
+		return movements as any;
 		// return await this.get('movements');
 	}
 
-	static async getUser() {
-		return user;
+	static async getUser(): Promise<User> {
+		return user as any;
 		// return await this.get('users/me');
 	}
 
 	static async login(username, password) {
-		const b = new Buffer(`${username}:${password}`);
-		const encodedAuth = b.toString('base64');
+		// const b = new Buffer(`${username}:${password}`);
+		// const encodedAuth = b.toString('base64');
 
-		const params = {
-			Authorization: `Basic ${encodedAuth}`
-		}
+		// const params = {
+		// 	Authorization: `Basic ${encodedAuth}`
+		// };
 		// const res = this.post('auth/login', params, body);
 		// const token = res.token;
 		const user = {

@@ -2,25 +2,28 @@ import * as React from 'react';
 import {
 	View,
 	Text,
-	StyleSheet,
+	StyleSheet
 } from 'react-native';
-import { WodbookApi } from '../shared/wodbook.api';
 
-export class WorkoutDetail extends React.Component {
+type MovementDetailProps = {
+	movement: Movement;
+};
+
+export class MovementDetail extends React.Component<MovementDetailProps, {}> {
 	constructor(props) {
 		super(props);
 	}
 
 	render() {
-		const { workout } = this.props;
+		const { movement } = this.props;
 		return (
 			<View style={styles.container}>
 				<View style={styles.header}>
-					<Text style={styles.headerText}>{workout.title}</Text>
-					<Text style={styles.headerText}>For: {workout.measurement}</Text>
+					<Text style={styles.headerText}>{movement.name}</Text>
+					<Text style={styles.headerText}>{movement.measurement}</Text>
 				</View>
 
-				<Text style={styles.description}>{workout.description}</Text>
+				{/* List of records here */}
 			</View>
 		);
 	}
@@ -47,4 +50,4 @@ const styles = StyleSheet.create({
 	description: {
 		fontSize: 16
 	}
-})
+});
