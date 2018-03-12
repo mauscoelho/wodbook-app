@@ -4,12 +4,20 @@ import {
 	TouchableHighlight
 } from 'react-native';
 
-import { WodbookApi } from '../shared/wodbook.api';
-import { ItemRow } from './ItemRow';
-import { ListSeparator } from './ListSeparator';
+import { WodbookApi } from '../../shared/wodbook.api';
+import { WorkoutListRow } from './WorkoutListRow';
+import { ListSeparator } from '../ListSeparator';
 import { WorkoutDetail } from './WorkoutDetail';
 
-export class WorkoutList extends React.Component {
+type WorkoutListProps = {
+	navigator: any[];
+};
+
+type WorkoutListState = {
+	workouts: Workout[];
+};
+
+export class WorkoutList extends React.Component<WorkoutListProps, WorkoutListState> {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -31,29 +39,29 @@ export class WorkoutList extends React.Component {
 			passProps: {
 				workout
 			}
-		})
-	};
+		});
+	}
 
 	renderItem({ item }) {
 		return (
 			<TouchableHighlight
 				onPress={() => this.onPressItem(item)}
 				underlayColor='#ddd'>
-				<ItemRow
+				<WorkoutListRow
 					id={item.id}
 					onPressItem={this.onPressItem}
 					title={item.title}
 				/>
 			</TouchableHighlight>
 		);
-	};
+	}
 
 	render() {
 		return (
 			<FlatList
 				data={this.state.workouts}
 				renderItem={this.renderItem.bind(this)}
-				keyExtractor={(item, index) => item._id}
+				keyExtractor={(item, _index) => item._id}
 				ItemSeparatorComponent={() => <ListSeparator />}
 			/>
 		);

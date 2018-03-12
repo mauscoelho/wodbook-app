@@ -6,24 +6,30 @@ import {
 	ActivityIndicator,
 	Image
 } from 'react-native';
+
 import { WodbookApi } from '../shared/wodbook.api';
 
-export class Profile extends React.Component {
+type ProfileState = {
+	user: User | null;
+};
+
+export class Profile extends React.Component<{}, ProfileState> {
 	constructor(props) {
 		super(props);
 		this.state = {
 			user: null
-		}
+		};
 	}
 
-	componentDidMount() {
-		WodbookApi.getUser().then((user) => {
+	async componentDidMount() {
+		try {
+			const user = await WodbookApi.getUser();
 			this.setState({
 				user
 			});
-		}).catch((err) => {
+		} catch (err) {
 			console.error(err);
-		})
+		}
 	}
 
 	render() {
@@ -31,13 +37,13 @@ export class Profile extends React.Component {
 			return <ActivityIndicator
 				style={styles.loader}
 				size='large'
-				animating={true} />
+				animating={true} />;
 		}
 
 		const { user } = this.state;
 		return (
 			<View style={styles.container}>
-				<Image source={require('../images/profile.png')} style={styles.image} />
+				<Image source={require('../../images/profile.png')} style={styles.image} />
 				{/* <Image source={{ uri: this.state.user.avatarUrl }} style={styles.image} /> */}
 				<Text style={{ fontWeight: '700', alignSelf: 'center' }}>{user.firstName} {user.lastName}</Text>
 				<Text style={{}}>{user.email}</Text>
@@ -65,22 +71,8 @@ const styles = StyleSheet.create({
 		marginBottom: 10,
 		alignSelf: 'center'
 	},
-	header: {
-		display: 'flex',
-		flexDirection: 'row',
-		justifyContent: 'space-between',
-		paddingBottom: 20
-
-	},
-	headerText: {
-		fontWeight: '700',
-		fontSize: 20
-	},
-	description: {
-		fontSize: 16
-	},
 	loader: {
 		flex: 1,
 		justifyContent: 'center'
 	},
-})
+});

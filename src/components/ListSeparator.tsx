@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import { View, StyleSheet } from 'react-native';
 
 export class ListSeparator extends React.Component {
@@ -6,7 +6,7 @@ export class ListSeparator extends React.Component {
 		return (
 			<View style={styles.separator} />
 		);
-	};
+	}
 }
 
 const styles = StyleSheet.create({
@@ -15,4 +15,4 @@ const styles = StyleSheet.create({
 		height: StyleSheet.hairlineWidth,
 		backgroundColor: '#CED0CE',
 	}
-})
+});

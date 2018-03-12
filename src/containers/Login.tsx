@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import {
 	ActivityIndicator,
 	TouchableHighlight,
@@ -8,38 +8,50 @@ import {
 	TextInput,
 	View
 } from 'react-native';
+
 import { AuthService } from '../shared/auth.service';
 
-export class Login extends React.Component {
+type LoginProps = {
+	onLogin: Function;
+};
+
+type LoginState = {
+	error: Error | null;
+	username?: string;
+	password?: string;
+	showProgress: boolean;
+};
+
+export class Login extends React.Component<LoginProps, LoginState> {
 	constructor(props) {
 		super(props);
 		this.state = {
 			error: null,
 			showProgress: false
-		}
+		};
 	}
-	
+
 	render() {
 		let errorCtrl = <View />;
 
 		if (this.state.error) {
 			errorCtrl = <Text style={styles.error}>
 				{this.state.error.message}
-			</Text>
+			</Text>;
 
 		}
 
 		return (
 			<View style={styles.container}>
 				<Image style={styles.logo}
-					source={require('../images/myguy.jpg')} />
+					source={require('../../images/myguy.jpg')} />
 				<Text style={styles.heading}>Wodbook</Text>
 				<TextInput style={styles.input}
 					onChangeText={(text) => this.setState({ username: text })}
-					placeholder="Username" />
+					placeholder='Username' />
 				<TextInput style={styles.input}
 					onChangeText={(text) => this.setState({ password: text })}
-					placeholder="Password"
+					placeholder='Password'
 					secureTextEntry={true} />
 				<TouchableHighlight
 					onPress={this.onLoginPressed.bind(this)}
@@ -121,4 +133,4 @@ const styles = StyleSheet.create({
 		color: 'red',
 		paddingTop: 10
 	}
-})
+});
