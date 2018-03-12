@@ -13,7 +13,7 @@
     "test": "jest",
     "test:coverage": "jest --coverage",
     "tsc": "tsc",
-    "clean": "rimraf build",
+    "clean": "rimraf artifacts",
     "build": "npm run clean && npm run tsc --",
     "lint": "tslint src/**/*.ts",
     "watch": "npm run build -- -w",
