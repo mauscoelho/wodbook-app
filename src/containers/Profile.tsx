@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 
 import { WodbookApi } from '../shared/wodbook.api';
+import { Utils } from '../shared/utils';
 
 type ProfileState = {
 	user: User | null;
@@ -43,15 +44,21 @@ export class Profile extends React.Component<{}, ProfileState> {
 		const { user } = this.state;
 		return (
 			<View style={styles.container}>
-				<Image source={require('../../images/profile.png')} style={styles.image} />
-				{/* <Image source={{ uri: this.state.user.avatarUrl }} style={styles.image} /> */}
-				<Text style={{ fontWeight: '700', alignSelf: 'center' }}>{user.firstName} {user.lastName}</Text>
-				<Text style={{}}>{user.email}</Text>
-				<Text style={{}}>Box: {user.boxName}</Text>
-				<Text style={{}}>Born: {new Date(user.dateOfBirth).toLocaleDateString()}</Text>
-				<Text style={{}}>{user.gender}</Text>
-				<Text style={{}}>Height: {user.height}cm</Text>
-				<Text style={{}}>Weight: {user.weight / 1000}kg</Text>
+				<View style={styles.header}>
+					<Image source={require('../../images/profile.png')} style={styles.image} />
+					{/* <Image source={{ uri: this.state.user.avatarUrl }} style={styles.image} /> */}
+					<Text style={styles.name}>{user.firstName} {user.lastName}</Text>
+					<Text style={{ alignSelf: 'center', fontSize: 18 }}>{user.boxName}</Text>
+				</View>
+
+				<View style={styles.stats}>
+					<Text>{Utils.calculateAge(user.dateOfBirth)} y/o</Text>
+					<Text>{user.gender}</Text>
+					<Text>{user.height}cm</Text>
+					<Text>{user.weight / 1000}kg</Text>
+				</View>
+
+				<Text>Feed goes here</Text>
 			</View>
 		);
 	}
@@ -63,6 +70,25 @@ const styles = StyleSheet.create({
 		paddingTop: 60, // for nav bar
 		paddingLeft: 15,
 		paddingRight: 15
+	},
+	header: {
+		borderBottomColor: '#CED0CE',
+		borderBottomWidth: StyleSheet.hairlineWidth,
+		paddingBottom: 20,
+		marginBottom: 20
+	},
+	stats: {
+		flexDirection: 'row',
+		justifyContent: 'space-around',
+		borderBottomColor: '#CED0CE',
+		borderBottomWidth: StyleSheet.hairlineWidth,
+		paddingBottom: 20,
+		marginBottom: 20
+	},
+	name: {
+		fontSize: 20,
+		fontWeight: '700',
+		alignSelf: 'center'
 	},
 	image: {
 		height: 150,

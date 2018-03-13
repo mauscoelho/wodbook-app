@@ -17,7 +17,7 @@ export class Home extends React.Component<{}, HomeState> {
 	constructor(props) {
 		super(props);
 		this.state = {
-			selectedTab: 'profile'
+			selectedTab: 'workouts'
 		};
 	}
 

@@ -8,7 +8,7 @@ export const user = {
 	'dateOfBirth': '1991-12-06T00:00:00.000Z',
 	'gender': 'male',
 	'height': 189,
-	'weight': 92000,
+	'weight': 92300,
 	'avatarUrl': 'http://localhost:43210/public/avatars/5aa40b8e054176a7455d6702.png',
 	'id': '5aa40b8e054176a7455d6702'
 };

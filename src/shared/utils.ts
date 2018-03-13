@@ -9,4 +9,11 @@ export class Utils {
 
 		return map;
 	}
+
+	static calculateAge(birthday: string) {
+		const date = new Date(birthday);
+		const ageDifMs = Date.now() - date.getTime();
+		const ageDate = new Date(ageDifMs);
+		return Math.abs(ageDate.getUTCFullYear() - 1970);
+	}
 }
