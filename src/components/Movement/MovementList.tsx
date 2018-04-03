@@ -3,14 +3,14 @@ import {
 	FlatList,
 	TouchableHighlight
 } from 'react-native';
+import { Navigator } from 'react-native-navigation';
 
 import { WodbookApi } from '../../shared/wodbook.api';
 import { MovementListRow } from './MovementListRow';
 import { ListSeparator } from '../ListSeparator';
-import { MovementDetail } from './MovementDetail';
 
 type MovementListProps = {
-	navigator: any[];
+	navigator: Navigator;
 };
 
 type MovementListState = {
@@ -35,7 +35,7 @@ export class MovementList extends React.Component<MovementListProps, MovementLis
 	onPressItem(movement) {
 		this.props.navigator.push({
 			title: 'Details',
-			component: MovementDetail,
+			screen: 'MovementDetail',
 			passProps: {
 				movement
 			}

@@ -1,4 +1,7 @@
-import { AppRegistry } from 'react-native';
+import { registerScreens } from './shared/screens';
 import { App } from './App';
 
-AppRegistry.registerComponent('wodbook', () => App);
+registerScreens();
+
+const app = new App();
+app.startApp();
