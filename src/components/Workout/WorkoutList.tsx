@@ -7,7 +7,6 @@ import {
 import { WodbookApi } from '../../shared/wodbook.api';
 import { WorkoutListRow } from './WorkoutListRow';
 import { ListSeparator } from '../ListSeparator';
-import { WorkoutDetail } from './WorkoutDetail';
 
 type WorkoutListProps = {
 	navigator: any[];
@@ -35,7 +34,7 @@ export class WorkoutList extends React.Component<WorkoutListProps, WorkoutListSt
 	onPressItem(workout) {
 		this.props.navigator.push({
 			title: 'Details',
-			component: WorkoutDetail,
+			screen: 'WorkoutDetail',
 			passProps: {
 				workout
 			}

@@ -1,4 +1,7 @@
-import { AppRegistry } from 'react-native';
+/* tslint:disable:no-unused-expression */
+import { registerScreens } from './shared/screens';
 import { App } from './App';
 
-AppRegistry.registerComponent('wodbook', () => App);
+registerScreens();
+
+new App();

@@ -19,7 +19,7 @@
   "exclude": [
     "android",
     "ios",
-    "build",
+    "artifacts",
     "node_modules"
   ],
   "compileOnSave": false
