@@ -1,14 +1,10 @@
 import * as React from 'react';
 import {
 	// ActivityIndicator,
-	// StyleSheet,
-	// SafeAreaView,
 } from 'react-native';
 
 import { Navigation } from 'react-native-navigation';
-
-// import { Home } from './containers/Home';
-// import { Login } from './containers/Login';
+import { iconsLoaded, iconsMap } from './shared/app.icons';
 // import { AuthService } from './shared/auth.service';
 
 type AppState = {
@@ -22,6 +18,9 @@ export class App extends React.Component<{}, AppState> {
 		this.state = {
 			checkingAuth: true
 		};
+		iconsLoaded().then(() => {
+			this.startApp();
+		});
 	}
 
 	// async componentDidMount() {
@@ -62,12 +61,36 @@ export class App extends React.Component<{}, AppState> {
 	// }
 
 	startApp() {
+		if (this.state.token) {
+			this.loginView();
+		} else {
+			this.homeView();
+		}
+	}
+
+	private loginView() {
+		Navigation.startSingleScreenApp({
+			screen: {
+				screen: 'Login',
+				title: 'Login'
+			}
+		});
+	}
+
+	private homeView() {
 		Navigation.startTabBasedApp({
 			tabs: [
+				{
+					label: 'Profile',
+					screen: 'Profile',
+					title: 'Profile',
+					icon: iconsMap['ios-person']
+				},
 				{
 					label: 'Workouts',
 					screen: 'WorkoutList',
 					title: 'Workouts',
+					icon: iconsMap['format-list-bulleted'],
 					navigatorButtons: {
 						rightButtons: [
 							{
@@ -81,19 +104,7 @@ export class App extends React.Component<{}, AppState> {
 					label: 'Movements',
 					screen: 'MovementList',
 					title: 'Movements',
-					navigatorButtons: {
-						rightButtons: [
-							{
-								title: 'Search',
-								id: 'search'
-							}
-						]
-					}
-				},
-				{
-					label: 'Profile',
-					screen: 'Profile',
-					title: 'Profile',
+					icon: iconsMap['dumbbell'],
 					navigatorButtons: {
 						rightButtons: [
 							{
@@ -110,15 +121,3 @@ export class App extends React.Component<{}, AppState> {
 		});
 	}
 }
-
-// const styles = StyleSheet.create({
-// 	container: {
-// 		flex: 1,
-// 		justifyContent: 'center',
-// 		backgroundColor: '#F5FCFF'
-// 	},
-// 	loader: {
-// 		flex: 1,
-// 		justifyContent: 'center'
-// 	}
-// });

@@ -24,7 +24,7 @@ export class MovementDetail extends React.Component<MovementDetailProps, {}> {
 				</View>
 
 				{/* List of records here */}
-			</View>
+				</View>
 		);
 	}
 }
@@ -32,7 +32,7 @@ export class MovementDetail extends React.Component<MovementDetailProps, {}> {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		paddingTop: 60, // for nav bar
+		paddingTop: 20,
 		paddingLeft: 15,
 		paddingRight: 15
 	},
