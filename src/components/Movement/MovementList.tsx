@@ -4,6 +4,7 @@ import {
 	TouchableHighlight
 } from 'react-native';
 import { Navigator } from 'react-native-navigation';
+import { SearchBar } from 'react-native-elements';
 
 import { WodbookApi } from '../../shared/wodbook.api';
 import { MovementListRow } from './MovementListRow';
@@ -14,6 +15,7 @@ type MovementListProps = {
 };
 
 type MovementListState = {
+	search: string;
 	movements: Movement[];
 };
 
@@ -21,6 +23,7 @@ export class MovementList extends React.Component<MovementListProps, MovementLis
 	constructor(props) {
 		super(props);
 		this.state = {
+			search: '',
 			movements: []
 		};
 	}
@@ -42,6 +45,21 @@ export class MovementList extends React.Component<MovementListProps, MovementLis
 		});
 	}
 
+	onSearch(search) {
+		this.setState({
+			search
+		});
+	}
+
+	renderHeader = () => {
+		return <SearchBar
+			placeholder='Search'
+			onChangeText={this.onSearch.bind(this)}
+			clearIcon={{ type: 'font-awesome', name: 'close' }}
+			lightTheme
+		/>;
+	}
+
 	renderItem({ item }) {
 		return (
 			<TouchableHighlight
@@ -55,11 +73,19 @@ export class MovementList extends React.Component<MovementListProps, MovementLis
 		);
 	}
 
+	filterBySearchTerm(item: Movement) {
+		const { search } = this.state;
+		return item.name.toLowerCase().includes(search.toLowerCase());
+	}
+
 	render() {
+		const items = this.state.movements;
+		const filteredList = this.state.search ? items.filter(this.filterBySearchTerm.bind(this)) : items;
 		return (
 			<FlatList
-				data={this.state.movements}
+				data={filteredList}
 				renderItem={this.renderItem.bind(this)}
+				ListHeaderComponent={this.renderHeader}
 				keyExtractor={(item, _index) => item._id}
 				ItemSeparatorComponent={() => <ListSeparator />}
 			/>

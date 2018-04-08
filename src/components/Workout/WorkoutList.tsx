@@ -3,6 +3,7 @@ import {
 	FlatList,
 	TouchableHighlight
 } from 'react-native';
+import { SearchBar } from 'react-native-elements';
 
 import { WodbookApi } from '../../shared/wodbook.api';
 import { WorkoutListRow } from './WorkoutListRow';
@@ -13,6 +14,7 @@ type WorkoutListProps = {
 };
 
 type WorkoutListState = {
+	search: string;
 	workouts: Workout[];
 };
 
@@ -20,6 +22,7 @@ export class WorkoutList extends React.Component<WorkoutListProps, WorkoutListSt
 	constructor(props) {
 		super(props);
 		this.state = {
+			search: '',
 			workouts: []
 		};
 	}
@@ -41,6 +44,21 @@ export class WorkoutList extends React.Component<WorkoutListProps, WorkoutListSt
 		});
 	}
 
+	onSearch(search) {
+		this.setState({
+			search
+		});
+	}
+
+	renderHeader = () => {
+		return <SearchBar
+			placeholder='Search'
+			onChangeText={this.onSearch.bind(this)}
+			clearIcon={{ type: 'font-awesome', name: 'close' }}
+			lightTheme
+		/>;
+	}
+
 	renderItem({ item }) {
 		return (
 			<TouchableHighlight
@@ -54,11 +72,19 @@ export class WorkoutList extends React.Component<WorkoutListProps, WorkoutListSt
 		);
 	}
 
+	filterBySearchTerm(item: Workout) {
+		const { search } = this.state;
+		return item.title.toLowerCase().includes(search.toLowerCase());
+	}
+
 	render() {
+		const items = this.state.workouts;
+		const filteredList = this.state.search ? items.filter(this.filterBySearchTerm.bind(this)) : items;
 		return (
 			<FlatList
-				data={this.state.workouts}
+				data={filteredList}
 				renderItem={this.renderItem.bind(this)}
+				ListHeaderComponent={this.renderHeader}
 				keyExtractor={(item, _index) => item._id}
 				ItemSeparatorComponent={() => <ListSeparator />}
 			/>

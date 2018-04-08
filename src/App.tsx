@@ -90,29 +90,13 @@ export class App extends React.Component<{}, AppState> {
 					label: 'Workouts',
 					screen: 'WorkoutList',
 					title: 'Workouts',
-					icon: iconsMap['format-list-bulleted'],
-					navigatorButtons: {
-						rightButtons: [
-							{
-								title: 'Search',
-								id: 'search'
-							}
-						]
-					}
+					icon: iconsMap['format-list-bulleted']
 				},
 				{
 					label: 'Movements',
 					screen: 'MovementList',
 					title: 'Movements',
-					icon: iconsMap['dumbbell'],
-					navigatorButtons: {
-						rightButtons: [
-							{
-								title: 'Search',
-								id: 'search'
-							}
-						]
-					}
+					icon: iconsMap['dumbbell']
 				}
 			],
 			appStyle: {
