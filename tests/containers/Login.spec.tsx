@@ -1,14 +1,14 @@
 import 'react-native';
 import * as React from 'react';
-import { App } from '../src/App';
+import { Login } from '../../src/containers/Login';
 
 // Note: test renderer must be required after react-native.
 import * as renderer from 'react-test-renderer';
 
-describe('App', () => {
-	it('renders correctly', () => {
+describe('Login', () => {
+	it('should render correctly', () => {
 		const tree = renderer.create(
-			<App />
+			<Login onLogin={() => { }} />
 		);
 
 		expect(tree.getInstance()).toBeDefined();
