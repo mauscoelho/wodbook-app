@@ -18,7 +18,8 @@
     "lint": "tslint src/**/*.ts",
     "watch": "npm run build -- -w",
     "start:ios": "npm run build && concurrently -r 'npm run watch' 'react-native run-ios --simulator \"iPhone X\"'",
-    "start:android": "npm run build && concurrently -r 'npm run watch' 'react-native run-android'"
+    "start:android": "npm run build && concurrently -r 'npm run watch' 'react-native run-android'",
+    "build:ios": "react-native bundle --entry-file='./artifacts/index.js' --bundle-output='./ios/wodbook/main.jsbundle' --dev=false --platform='ios' --assets-dest='./ios'"
   },
   "dependencies": {
     "buffer": "^5.1.0",

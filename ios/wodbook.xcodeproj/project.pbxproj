@@ -36,6 +36,7 @@
 		A22CD8E5029A466B90B62E31 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6F1EEE1FCDA84A9390BDBA54 /* FontAwesome.ttf */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		CD12E685204AFF8A006678B0 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
+		CD768480207ABC4400881B53 /* main.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = CD768456207ABC4400881B53 /* main.jsbundle */; };
 		CDDD7C0120584BE200244472 /* libReactNativeNavigation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CDDD7BFD20584B4F00244472 /* libReactNativeNavigation.a */; settings = {ATTRIBUTES = (Required, ); }; };
 		E68434C4D8F64BA6A65F47E8 /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E91ECE6C799648599CA5F983 /* Entypo.ttf */; };
 /* End PBXBuildFile section */
@@ -338,7 +339,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 		00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTActionSheet.xcodeproj; path = "../node_modules/react-native/Libraries/ActionSheetIOS/RCTActionSheet.xcodeproj"; sourceTree = "<group>"; };
 		00C302B51ABCB90400DB3ED1 /* RCTGeolocation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTGeolocation.xcodeproj; path = "../node_modules/react-native/Libraries/Geolocation/RCTGeolocation.xcodeproj"; sourceTree = "<group>"; };
 		00C302BB1ABCB91800DB3ED1 /* RCTImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTImage.xcodeproj; path = "../node_modules/react-native/Libraries/Image/RCTImage.xcodeproj"; sourceTree = "<group>"; };
@@ -373,6 +373,7 @@
 		A12A7B50C603408AB29709A8 /* RNVectorIcons.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNVectorIcons.xcodeproj; path = "../node_modules/react-native-vector-icons/RNVectorIcons.xcodeproj"; sourceTree = "<group>"; };
 		A46EBF4D0D7B45BA88180AE2 /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
+		CD768456207ABC4400881B53 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = main.jsbundle; path = wodbook/main.jsbundle; sourceTree = "<group>"; };
 		CDDD7BD320584B4E00244472 /* ReactNativeNavigation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactNativeNavigation.xcodeproj; path = "../node_modules/react-native-navigation/ios/ReactNativeNavigation.xcodeproj"; sourceTree = "<group>"; };
 		CF4EE41D15E340AB978AD77B /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		D4CB61D25BF645F6B342EC3E /* libRNVectorIcons.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNVectorIcons.a; sourceTree = "<group>"; };
@@ -495,7 +496,7 @@
 		13B07FAE1A68108700A75B9A /* wodbook */ = {
 			isa = PBXGroup;
 			children = (
-				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
+				CD768456207ABC4400881B53 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -1130,6 +1131,7 @@
 				E68434C4D8F64BA6A65F47E8 /* Entypo.ttf in Resources */,
 				497E30FFCFF7413EA78B4D80 /* EvilIcons.ttf in Resources */,
 				024A20A16AFA4937B267DB25 /* Feather.ttf in Resources */,
+				CD768480207ABC4400881B53 /* main.jsbundle in Resources */,
 				A22CD8E5029A466B90B62E31 /* FontAwesome.ttf in Resources */,
 				482C38D6C82E4A2F8F9F430C /* Foundation.ttf in Resources */,
 				92EDF376CFFA4D2493473263 /* Ionicons.ttf in Resources */,
