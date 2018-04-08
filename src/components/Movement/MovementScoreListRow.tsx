@@ -5,19 +5,19 @@ import {
 } from 'react-native';
 
 type MovementListRowProps = {
-	id: string;
-	title: string;
+	score: MovementScore;
 };
 
-export class MovementListRow extends React.PureComponent<MovementListRowProps, {}> {
+export class MovementListScoreRow extends React.PureComponent<MovementListRowProps, {}> {
 	constructor(props) {
 		super(props);
 	}
 
 	render() {
+		const { score } = this.props;
 		return (
 			<Text style={styles.item}>
-				{this.props.title}
+				{score.sets} x {score.score} ({new Date(score.createdAt).toDateString()})
 			</Text>
 		);
 	}

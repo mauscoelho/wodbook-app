@@ -5,50 +5,39 @@ import {
 } from 'react-native';
 
 import { WodbookApi } from '../../shared/wodbook.api';
-import { WorkoutListRow } from './WorkoutListRow';
 import { ListSeparator } from '../ListSeparator';
+import { MovementListScoreRow } from './MovementScoreListRow';
 
-type WorkoutListProps = {
-	navigator: any[];
+type MovementScoreListProps = {
+	movementId: string;
 };
 
-type WorkoutListState = {
-	workouts: Workout[];
+type MovementScoreListState = {
+	scores: MovementScore[];
 };
 
-export class WorkoutList extends React.Component<WorkoutListProps, WorkoutListState> {
+export class MovementScoreList extends React.Component<MovementScoreListProps, MovementScoreListState> {
 	constructor(props) {
 		super(props);
 		this.state = {
-			workouts: []
+			scores: []
 		};
 	}
 
 	async componentDidMount() {
-		const workouts = await WodbookApi.getWorkouts();
+		const { movementId } = this.props;
+		const scores = await WodbookApi.getMovementScores(movementId);
 		this.setState({
-			workouts
-		});
-	}
-
-	onPressItem(workout) {
-		this.props.navigator.push({
-			title: 'Details',
-			screen: 'WorkoutDetail',
-			passProps: {
-				workout
-			}
+			scores
 		});
 	}
 
 	renderItem({ item }) {
 		return (
 			<TouchableHighlight
-				onPress={() => this.onPressItem(item)}
 				underlayColor='#ddd'>
-				<WorkoutListRow
-					id={item.id}
-					title={item.title}
+				<MovementListScoreRow
+					score={item}
 				/>
 			</TouchableHighlight>
 		);
@@ -57,7 +46,7 @@ export class WorkoutList extends React.Component<WorkoutListProps, WorkoutListSt
 	render() {
 		return (
 			<FlatList
-				data={this.state.workouts}
+				data={this.state.scores}
 				renderItem={this.renderItem.bind(this)}
 				keyExtractor={(item, _index) => item._id}
 				ItemSeparatorComponent={() => <ListSeparator />}

@@ -7,7 +7,6 @@ import {
 type WorkoutListRowProps = {
 	id: string;
 	title: string;
-	onPressItem: Function;
 };
 
 export class WorkoutListRow extends React.PureComponent<WorkoutListRowProps, {}> {

@@ -4,20 +4,21 @@ import {
 	StyleSheet
 } from 'react-native';
 
-type MovementListRowProps = {
-	id: string;
-	title: string;
+type WorkoutListRowProps = {
+	score: WorkoutScore;
 };
 
-export class MovementListRow extends React.PureComponent<MovementListRowProps, {}> {
+export class WorkoutListScoreRow extends React.PureComponent<WorkoutListRowProps, {}> {
 	constructor(props) {
 		super(props);
 	}
 
 	render() {
+		const { score } = this.props;
+
 		return (
 			<Text style={styles.item}>
-				{this.props.title}
+				{score.score} ({new Date(score.createdAt).toDateString()}) - {score.rx ? 'Rx' : 'Scaled'}
 			</Text>
 		);
 	}

@@ -32,12 +32,12 @@ export class MovementList extends React.Component<MovementListProps, MovementLis
 		});
 	}
 
-	onPressItem(movement) {
+	onPressItem(movementId: string) {
 		this.props.navigator.push({
-			title: 'Details',
-			screen: 'MovementDetail',
+			title: 'Scores',
+			screen: 'MovementScoreList',
 			passProps: {
-				movement
+				movementId
 			}
 		});
 	}
@@ -45,11 +45,10 @@ export class MovementList extends React.Component<MovementListProps, MovementLis
 	renderItem({ item }) {
 		return (
 			<TouchableHighlight
-				onPress={() => this.onPressItem(item)}
+				onPress={() => this.onPressItem(item._id)}
 				underlayColor='#ddd'>
 				<MovementListRow
 					id={item.id}
-					onPressItem={this.onPressItem}
 					title={item.name}
 				/>
 			</TouchableHighlight>

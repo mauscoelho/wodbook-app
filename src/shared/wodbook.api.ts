@@ -1,5 +1,6 @@
 // import { Buffer } from 'buffer';
-import { workouts, movements, user } from './mock.data';
+import * as _ from 'lodash';
+import { workouts, movements, user, movementScores, workoutScores } from './mock.data';
 const token = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVhOTczYzE4ZWU2ZjgyYTE0NWYyNDI5OCIsImVtYWlsIjoiZWdpbGxzdmVpbmJqb3Juc0BnbWFpbC5jb20iLCJhZG1pbiI6dHJ1ZSwiaWF0IjoxNTE5ODYwODIzLCJleHAiOjE1NTEzMTA0MjN9.yMbSuyo3Op4mMeeguEszy0Dp1WyDz-uMa8t8h7FUjXQ';
 
 export class WodbookApi {
@@ -39,9 +40,17 @@ export class WodbookApi {
 		// return await this.get('workouts');
 	}
 
+	static async getWorkoutScores(workoutId): Promise<WorkoutScore[]> {
+		return _.filter(workoutScores, { workoutId });
+	}
+
 	static async getMovements(): Promise<Movement[]> {
 		return movements as any;
 		// return await this.get('movements');
+	}
+
+	static async getMovementScores(movementId): Promise<MovementScore[]> {
+		return _.filter(movementScores, { movementId });
 	}
 
 	static async getUser(): Promise<User> {

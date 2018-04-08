@@ -10,7 +10,7 @@ declare type User = {
 	height: number;
 	weight: number;
 	avatarUrl: string;
-	id: string;
+	_id: string;
 }
 
 declare type Workout = {
@@ -21,8 +21,20 @@ declare type Workout = {
 	createdBy: string;
 	createdAt: Date;
 	modifiedAt: Date;
-	id: string;
+	_id: string;
 };
+
+declare type WorkoutScore = {
+	rx: boolean;
+	score: string;
+	notes: string;
+	workoutId: string;
+	measurement: string;
+	createdAt: string;
+	createdBy: string;
+	updatedAt: string;
+	_id: string;
+}
 
 declare type Movement = {
 	name: string;
@@ -30,5 +42,17 @@ declare type Movement = {
 	createdBy: string;
 	createdAt: Date;
 	modifiedAt: Date;
-	id: string;
+	_id: string;
 };
+
+declare type MovementScore = {
+	sets: number;
+	score: string;
+	notes: string;
+	movementId: string;
+	measurement: string;
+	createdAt: string;
+	createdBy: string;
+	updatedAt: string;
+	_id: string;
+}
