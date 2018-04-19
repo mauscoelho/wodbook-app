@@ -3,7 +3,7 @@ import {
 	FlatList,
 	TouchableHighlight
 } from 'react-native';
-import { SearchBar } from 'react-native-elements';
+import { SearchBar } from 'react-native-ios-kit';
 
 import { WodbookApi } from '../../shared/wodbook.api';
 import { WorkoutListRow } from './WorkoutListRow';
@@ -44,18 +44,12 @@ export class WorkoutList extends React.Component<WorkoutListProps, WorkoutListSt
 		});
 	}
 
-	onSearch(search) {
-		this.setState({
-			search
-		});
-	}
-
 	renderHeader = () => {
 		return <SearchBar
-			placeholder='Search'
-			onChangeText={this.onSearch.bind(this)}
-			clearIcon={{ type: 'font-awesome', name: 'close' }}
-			lightTheme
+			value={this.state.search}
+			onValueChange={(search) => this.setState({ search })}
+			withCancel
+			animated
 		/>;
 	}
 

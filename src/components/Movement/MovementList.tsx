@@ -4,7 +4,7 @@ import {
 	TouchableHighlight
 } from 'react-native';
 import { Navigator } from 'react-native-navigation';
-import { SearchBar } from 'react-native-elements';
+import { SearchBar } from 'react-native-ios-kit';
 
 import { WodbookApi } from '../../shared/wodbook.api';
 import { MovementListRow } from './MovementListRow';
@@ -45,18 +45,12 @@ export class MovementList extends React.Component<MovementListProps, MovementLis
 		});
 	}
 
-	onSearch(search) {
-		this.setState({
-			search
-		});
-	}
-
 	renderHeader = () => {
 		return <SearchBar
-			placeholder='Search'
-			onChangeText={this.onSearch.bind(this)}
-			clearIcon={{ type: 'font-awesome', name: 'close' }}
-			lightTheme
+			value={this.state.search}
+			onValueChange={(search) => this.setState({ search })}
+			withCancel
+			animated
 		/>;
 	}
 
