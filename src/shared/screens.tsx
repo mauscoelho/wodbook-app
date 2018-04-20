@@ -12,10 +12,10 @@ import { WorkoutScoreList } from '../components/Workout/WorkoutScoreList';
 import { MovementScoreList } from '../components/Movement/MovementScoreList';
 
 function register(componentId, Component) {
-	const wrappedComponent = () => {
+	const wrappedComponent = (props) => {
 		return (
 			<ThemeProvider>
-				<Component />
+				<Component {...props} />
 			</ThemeProvider>
 		);
 	};
