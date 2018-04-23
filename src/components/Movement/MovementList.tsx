@@ -45,19 +45,6 @@ export class MovementList extends React.Component<MovementListProps, MovementLis
 		});
 	}
 
-	renderHeader = () => {
-		return <SearchBar
-			onChange={(search) => this.setState({ search: search.nativeEvent.text })}
-			onClear={() => this.setState({ search: '' })}
-			containerStyle={{ backgroundColor: 'white' }}
-			inputStyle={{ backgroundColor: 'white', fontSize: 15 }}
-			value={this.state.search}
-			placeholder='Search'
-			clearIcon={this.state.search !== ''}
-			lightTheme
-		/>;
-	}
-
 	renderItem({ item }) {
 		return (
 			<TouchableHighlight
@@ -74,6 +61,19 @@ export class MovementList extends React.Component<MovementListProps, MovementLis
 	filterBySearchTerm(item: Movement) {
 		const { search } = this.state;
 		return item.name.toLowerCase().includes(search.toLowerCase());
+	}
+
+	renderHeader = () => {
+		return <SearchBar
+			onChange={(search) => this.setState({ search: search.nativeEvent.text })}
+			onClear={() => this.setState({ search: '' })}
+			containerStyle={{ backgroundColor: 'white' }}
+			inputStyle={{ backgroundColor: 'white', fontSize: 15 }}
+			value={this.state.search}
+			placeholder='Search'
+			clearIcon={this.state.search !== ''}
+			lightTheme
+		/>;
 	}
 
 	render() {
