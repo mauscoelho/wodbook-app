@@ -1,7 +1,5 @@
 import * as React from 'react';
 import { Navigation } from 'react-native-navigation';
-import { ThemeProvider } from 'react-native-ios-kit';
-
 import { App } from '../App';
 import { Login } from '../containers/Login';
 import { Profile } from '../containers/Profile';
@@ -11,16 +9,27 @@ import { WorkoutDetail } from '../components/Workout/WorkoutDetail';
 import { WorkoutScoreList } from '../components/Workout/WorkoutScoreList';
 import { MovementScoreList } from '../components/Movement/MovementScoreList';
 
+/**
+ * When there comes a reason to do anything that
+ * requires a global wrap, it can be plugged in here.
+ *
+ * @param componentId Unique Id of the screen to register
+ * @param Component The component to display for the screenId
+ */
 function register(componentId, Component) {
 	const wrappedComponent = (props) => {
 		return (
+<<<<<<< HEAD
 			<ThemeProvider>
 				<Component {...props} />
 			</ThemeProvider>
+=======
+			<Component {...props} />
+>>>>>>> upstream/searching
 		);
 	};
 
-	Navigation.registerComponent(componentId, () => wrappedComponent, null, ThemeProvider);
+	Navigation.registerComponent(componentId, () => wrappedComponent);
 }
 
 export function registerScreens() {
