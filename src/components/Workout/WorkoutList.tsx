@@ -19,8 +19,6 @@ type WorkoutListState = {
 };
 
 export class WorkoutList extends React.Component<WorkoutListProps, WorkoutListState> {
-	search: any;
-
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -46,23 +44,6 @@ export class WorkoutList extends React.Component<WorkoutListProps, WorkoutListSt
 		});
 	}
 
-	onSearch(search) {
-		this.setState({ search });
-	}
-
-	renderHeader = () => {
-		return <SearchBar
-			onChange={(search) => this.setState({ search: search.nativeEvent.text })}
-			onClear={() => this.setState({ search: '' })}
-			containerStyle={{ backgroundColor: 'white' }}
-			inputStyle={{ backgroundColor: 'white', fontSize: 15 }}
-			value={this.state.search}
-			placeholder='Search'
-			clearIcon={this.state.search !== ''}
-			lightTheme
-		/>;
-	}
-
 	renderItem({ item }) {
 		return (
 			<TouchableHighlight
@@ -79,6 +60,19 @@ export class WorkoutList extends React.Component<WorkoutListProps, WorkoutListSt
 	filterBySearchTerm(item: Workout) {
 		const { search } = this.state;
 		return item.title.toLowerCase().includes(search.toLowerCase());
+	}
+
+	renderHeader = () => {
+		return <SearchBar
+			onChange={(search) => this.setState({ search: search.nativeEvent.text })}
+			onClear={() => this.setState({ search: '' })}
+			containerStyle={{ backgroundColor: 'white' }}
+			inputStyle={{ backgroundColor: 'white', fontSize: 15 }}
+			value={this.state.search}
+			placeholder='Search'
+			clearIcon={this.state.search !== ''}
+			lightTheme
+		/>;
 	}
 
 	render() {
