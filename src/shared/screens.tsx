@@ -19,13 +19,7 @@ import { MovementScoreList } from '../components/Movement/MovementScoreList';
 function register(componentId, Component) {
 	const wrappedComponent = (props) => {
 		return (
-<<<<<<< HEAD
-			<ThemeProvider>
-				<Component {...props} />
-			</ThemeProvider>
-=======
 			<Component {...props} />
->>>>>>> upstream/searching
 		);
 	};
 
